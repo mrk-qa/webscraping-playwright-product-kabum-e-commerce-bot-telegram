@@ -2,11 +2,11 @@
 
 <div align="center">
   <img src="assets/playwright_logo.png" width="30%" style="margin-right: 30px;" />
+  ➕
   <img src="assets/kabum_logo.png" width="30%" style="margin-right: 30px;" />
+  ➕
   <img src="assets/telegram_logo.png" width="15%" />
 </div>
-    
-Este projeto realiza o scraping de preços de produtos no site **KaBuM!** e envia os resultados via **Telegram Bot**. Ele utiliza o **Playwright** para o scraping e a biblioteca `python-telegram-bot` para enviar as mensagens.
 
 ## Índice
 
