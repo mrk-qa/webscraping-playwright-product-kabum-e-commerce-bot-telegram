@@ -1,0 +1,31 @@
+name: Daily Product Price Check
+
+on:
+  schedule:
+    - cron: '0 4 * * *' # Executa todos os dias às 04:00 UTC (01:00 Brasília)
+  workflow_dispatch:
+
+jobs:
+  check_prices:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run Price Check Script
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: |
+          python main.py
