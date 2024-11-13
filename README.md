@@ -1,11 +1,7 @@
 # Scraping de Preços de Produtos KaBuM! e Envio para o Telegram
 
-<div align="center" style="display: flex; align-items: center;">
-  <img src="assets/playwright_logo.png" width="30%" style="margin-right: 10px;" />
-  <span>➕</span>
-  <img src="assets/kabum_logo.png" width="30%" style="margin-left: 10px; margin-right: 10px;" />
-  <span>➕</span>
-  <img src="assets/telegram_logo.png" width="15%" />
+<div align="center">
+  <img src="assets/banner-repositorio-webscraping-playwright-product-kabum-e-commerce-bot-telegram.png" width="80%" />
 </div>
 
 
