@@ -1,7 +1,7 @@
 # Scraping de Preços de Produtos KaBuM! e Envio para o Telegram
 
 <div align="center">
-  <img src="assets/banner-repositorio-webscraping-playwright-product-kabum-e-commerce-bot-telegram.png" width="80%" />
+  <img src="assets/banner-repositorio-webscraping-playwright-product-kabum-e-commerce-bot-telegram.png" />
 </div>
 
 
@@ -14,8 +14,8 @@
     2. [Instalar as Dependências](#32-instalar-as-dependências)
     3. [Instalar Navegadores do Playwright](#33-instalar-navegadores-do-playwright)
     4. [Configurando o dotenv](#34-configurando-o-dotenv)
-4. [Executando o Script](#5-executando-o-script)
-5. [Configuração do GitHub Actions](#6-configuração-do-github-actions)
+4. [Executando o Script](#4-executando-o-script)
+5. [Configuração do GitHub Actions](#5-configuração-do-github-actions)
 6. [Contribuindo](#6-contribuindo)
 
 ## 1. Tecnologias Utilizadas
