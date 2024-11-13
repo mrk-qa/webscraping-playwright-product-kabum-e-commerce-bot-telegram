@@ -1,56 +1,103 @@
-# Web Scraping de Produtos e Envio via Telegram
+# Scraping de Preços de Produtos KaBuM! e Envio para o Telegram
 
-Este projeto realiza a automação para buscar informações de preços de produtos no e-commerce **KaBuM!**, utilizando o **Playwright** para scraping e enviando as informações através de um **bot do Telegram**.
+<div align="center">
+  <img src="assets/playwright_logo.png" width="30%" />
+  <img src="assets/kabum_logo.png" width="30%" />
+  <img src="assets/telegram_logo.png" width="30%" />
+</div>
 
-![Telegram Logo](assets/telegram_logo.png)  
-*Logo do Telegram*
 
-![Playwright Logo](assets/playwright_logo.png)  
-*Logo do Playwright*
+Este projeto realiza o scraping de preços de produtos no site **KaBuM!** e envia os resultados via **Telegram Bot**. Ele utiliza o **Playwright** para o scraping e a biblioteca `python-telegram-bot` para enviar as mensagens.
 
-![KaBuM Logo](assets/kabum_logo.png)  
-*Logo do KaBuM!*
+## Índice
 
-## Funcionalidade
+1. [Tecnologias Utilizadas](#1-tecnologias-utilizadas)
+2. [Pré-requisitos](#2-pré-requisitos)
+3. [Instalação e Configuração](#3-instalação-e-configuração)
+    1. [Criar o Bot no Telegram](#31-criar-o-bot-no-telegram)
+    2. [Instalar as Dependências](#32-instalar-as-dependências)
+    3. [Instalar Navegadores do Playwright](#33-instalar-navegadores-do-playwright)
+    4. [Configurando o dotenv](#34-configurando-o-dotenv)
+4. [Executando o Script](#5-executando-o-script)
+5. [Configuração do GitHub Actions](#6-configuração-do-github-actions)
+6. [Contribuindo](#6-contribuindo)
 
-O script realiza as seguintes tarefas:
+## 1. Tecnologias Utilizadas
 
-1. Pesquisa um produto no e-commerce **KaBuM!**.
-2. Extrai informações como o preço antigo, preço novo, preço em parcelas e o link do produto.
-3. Envia as informações obtidas para um **canal do Telegram** via bot.
+- **Playwright**: Framework para automação de navegador, utilizado para realizar o scraping.
+- **python-telegram-bot**: Biblioteca para interação com a API do Telegram e envio de mensagens.
+- **GitHub Actions**: Ferramenta para automação de workflows, usada para agendar a execução diária do scraping.
 
-## Tecnologias Utilizadas
+## 2. Pré-requisitos
 
-- **Playwright**: Framework utilizado para realizar o scraping no site.
-- **Telegram Bot API**: Para enviar as informações diretamente para um canal no Telegram.
+- Python 3.7 ou superior
+- Conta no Telegram e criação de um Bot
+- Acesso ao repositório GitHub para configurar a automação
 
-## Pré-Requisitos
+## 3. Instalação e Configuração
 
-Antes de rodar o projeto, você precisará configurar o ambiente de desenvolvimento e criar um bot no Telegram. Siga as etapas abaixo para a configuração.
+### 3.1 Criar o Bot no Telegram
 
-### 1. Criar um Bot no Telegram
-
-Para criar um bot no Telegram, siga os seguintes passos:
+Para interagir com o **Telegram Bot**, siga os passos abaixo:
 
 1. Abra o Telegram e procure por **@BotFather**.
-2. Envie o comando `/newbot` para criar um novo bot.
-3. O BotFather pedirá para você nomear seu bot e criar um nome de usuário único (que termina com "bot").
-4. Após a criação, você receberá um **token** do bot. Guarde este token, pois você precisará dele para a configuração do seu bot.
+2. Envie o comando `/newbot` para o **BotFather**.
+3. Siga as instruções para criar o bot e obtenha o **Token do Bot**.
+4. Adicione o bot ao seu canal e obtenha o **ID do Canal**. Você pode usar o **BotFather** para encontrar o ID do canal.
 
-### 2. Criar um Canal no Telegram
+### 3.2 Instalar as Dependências
 
-Se você ainda não tem um canal, siga estas etapas:
-
-1. No Telegram, crie um canal.
-2. Adicione o bot recém-criado como administrador do canal.
-3. Obtenha o **ID do canal**. Para isso, você pode usar o bot **@userinfobot** para descobrir o ID do seu canal. O ID será algo como `@channelusername` ou um número negativo (exemplo: `-123456789`).
-
-### 3. Instalar Dependências
-
-Para rodar o projeto, é necessário instalar algumas dependências. Siga as etapas abaixo:
-
-#### 3.1 Clonar o Repositório
+Instale as dependências necessárias utilizando o `pip`:
 
 ```bash
-git clone https://github.com/mrk-qa/webscraping-playwright-product-kabum-e-commerce-bot-telegram.git
-cd webscraping-playwright-product-kabum-e-commerce-bot-telegram
+pip install -r requirements.txt
+```
+
+### 3.3 Instalar Navegadores do Playwright
+
+O Playwright requer que você instale os navegadores para o scraping. Execute o seguinte comando:
+
+```bash
+python -m playwright install
+```
+
+### 3.4 Configurando o dotenv
+
+O arquivo .env será utilizado para armazenar as variáveis de ambiente, como o Token do Bot e o ID do Canal de forma segura.
+
+Crie um arquivo chamado .env na raiz do seu projeto e adicione as seguintes variáveis:
+
+```bash
+TELEGRAM_TOKEN=SEU_TOKEN_AQUI
+TELEGRAM_CHAT_ID=SEU_CHAT_ID_AQUI
+```
+
+Substitua SEU_TOKEN_AQUI pelo token do seu bot (obtido no passo 1) e SEU_CHAT_ID_AQUI pelo ID do seu canal.
+
+### 4. Executando o Script
+
+Agora, você pode executar o script que irá realizar a busca dos produtos e enviar as informações para o Telegram.
+
+Execute o seguinte comando:
+
+```bash
+python main.py
+```
+
+Ou, se preferir, você pode rodar o script de forma automatizada utilizando GitHub Actions, que pode ser configurado para rodar diariamente e enviar atualizações do preço para o Telegram.
+
+### 5. Configuração do GitHub Actions
+
+O projeto está configurado para rodar automaticamente todos os dias às 01:00 (horário de Brasília). Para isso, foi criado um workflow utilizando GitHub Actions. O arquivo de configuração está localizado em .github/workflows/web-scraping.yml.
+
+Se você deseja rodar o workflow manualmente ou de forma agendada, o cronograma está configurado para rodar todos os dias às 01:00:
+
+```bash
+on:
+schedule:
+- cron: '0 1 * * *'  # Executa a cada dia às 01:00 (horário de Brasília)
+workflow_dispatch:  # Permite a execução manual também
+```
+
+### 6. Contribuindo
+Se você deseja contribuir com melhorias para o projeto, faça um fork, crie uma branch e envie suas mudanças com um pull request.
