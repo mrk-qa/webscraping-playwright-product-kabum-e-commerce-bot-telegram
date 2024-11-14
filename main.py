@@ -10,7 +10,14 @@ async def main():
     ]
 
     for product_name in products:
-        message = await search_product(product_name)
+        product_info = await search_product(product_name)
+
+        message = f'Produto: {product_info["nome"]}\n'
+        message += f'Preço Antigo: R$ {product_info["preco_antigo"]}\n'
+        message += f'Preço Novo: R$ {product_info["preco_novo"]}\n'
+        message += f'Preço em Parcelas: R$ {product_info["preco_parcelas"]}\n'
+        message += f'Link do Produto: {product_info["link"]}'
+
         await send_telegram_message(message)
 
 if __name__ == '__main__':
