@@ -16,7 +16,8 @@
     4. [Configurando o dotenv](#34-configurando-o-dotenv)
 4. [Executando o Script](#4-executando-o-script)
 5. [Configuração do GitHub Actions](#5-configuração-do-github-actions)
-6. [Contribuindo](#6-contribuindo)
+6. [Resultado](#6-resultado)
+7. [Contribuindo](#6-contribuindo)
 
 ## 1. Tecnologias Utilizadas
 
@@ -95,5 +96,11 @@ schedule:
 workflow_dispatch:  # Permite a execução manual também
 ```
 
-### 6. Contribuindo
+### 6. Resultado
+
+<div align="center">
+  <img src="assets/telegram-webscrapingbot.png" width="30%" />
+</div>
+
+### 7. Contribuindo
 Se você deseja contribuir com melhorias para o projeto, faça um fork, crie uma branch e envie suas mudanças com um pull request.
