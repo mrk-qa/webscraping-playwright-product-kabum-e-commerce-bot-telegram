@@ -30,19 +30,31 @@ async def search_product(product_name):
             product_url = page.url
 
             product_name = await page.locator('h1.brTtKt').inner_text()
-            old_price = float((await page.locator('.oldPrice').inner_text()).replace('R$', '').replace(',', '.').strip())
-            new_price = float((await page.locator('.finalPrice').inner_text()).replace('R$', '').replace(',', '.').strip())
-            installment_price = float((await page.locator('.regularPrice').inner_text()).replace('R$', '').replace(',', '.').strip())
+
+            try:
+                old_price = float((await page.locator('.oldPrice').inner_text()).replace('R$', '').replace(',', '.').strip())
+            except Exception:
+                old_price = 'N/A'
+
+            try:
+                new_price = float((await page.locator('.finalPrice').inner_text()).replace('R$', '').replace(',', '.').strip())
+            except Exception:
+                new_price = 'N/A'
+
+            try:
+                installment_price = float((await page.locator('.regularPrice').inner_text()).replace('R$', '').replace(',', '.').strip())
+            except Exception:
+                installment_price = 'N/A'
 
             await browser.close()
 
-            message = f'Produto: {product_name}\n'
-            message += f'Preço Antigo: R$ {old_price:.2f}\n' if old_price else 'Preço Antigo: Não disponível\n'
-            message += f'Preço Novo: R$ {new_price:.2f}\n' if new_price else 'Preço Novo: Não disponível\n'
-            message += f'Preço em Parcelas: R$ {installment_price:.2f}\n' if installment_price else 'Preço em Parcelas: Não disponível\n'
-            message += f'Link do Produto: {product_url}'
-
-            return message
+            return {
+                'nome': product_name,
+                'preco_antigo': old_price,
+                'preco_novo': new_price,
+                'preco_parcelas': installment_price,
+                'link': product_url
+            }
 
     except Exception as e:
         return f'Erro durante a automação: {str(e)}'
