@@ -92,7 +92,7 @@ Se você deseja rodar o workflow manualmente ou de forma agendada, o cronograma 
 ```bash
 on:
 schedule:
-- cron: '0 1 * * *'  # Executa a cada dia às 01:00 (horário de Brasília)
+- cron: '0 4 * 11 *' # Executa todos os dias às 04:00 UTC (01:00 Brasília) somente em novembro
 workflow_dispatch:  # Permite a execução manual também
 ```
 
