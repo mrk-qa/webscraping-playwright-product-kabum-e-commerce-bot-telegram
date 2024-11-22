@@ -71,7 +71,7 @@ TELEGRAM_CHAT_ID=SEU_CHAT_ID_AQUI
 
 Substitua SEU_TOKEN_AQUI pelo token do seu bot (obtido no passo 1) e SEU_CHAT_ID_AQUI pelo ID do seu canal.
 
-### 4. Executando o Script
+## 4. Executando o Script
 
 Agora, você pode executar o script que irá realizar a busca dos produtos e enviar as informações para o Telegram.
 
@@ -83,7 +83,7 @@ python main.py
 
 Ou, se preferir, você pode rodar o script de forma automatizada utilizando GitHub Actions, que pode ser configurado para rodar diariamente e enviar atualizações do preço para o Telegram.
 
-### 5. Configuração do GitHub Actions
+## 5. Configuração do GitHub Actions
 
 O projeto está configurado para rodar automaticamente todos os dias às 01:00 (horário de Brasília). Para isso, foi criado um workflow utilizando GitHub Actions. O arquivo de configuração está localizado em .github/workflows/web-scraping.yml.
 
@@ -96,11 +96,11 @@ schedule:
 workflow_dispatch:  # Permite a execução manual também
 ```
 
-### 6. Resultado
+## 6. Resultado
 
 <div align="center">
   <img src="assets/telegram-webscrapingbot.png" width="30%" />
 </div>
 
-### 7. Contribuindo
+## 7. Contribuindo
 Se você deseja contribuir com melhorias para o projeto, faça um fork, crie uma branch e envie suas mudanças com um pull request.
