@@ -103,4 +103,8 @@ workflow_dispatch:  # Permite a execução manual também
 </div>
 
 ## 7. Contribuindo
-Se você deseja contribuir com melhorias para o projeto, faça um fork, crie uma branch e envie suas mudanças com um pull request.
+Se você deseja apoiar este projeto, deixe um ⭐.
+
+___
+
+Feito com 💙 por [Marco Antonio](https://www.linkedin.com/in/mrk-silva/).
